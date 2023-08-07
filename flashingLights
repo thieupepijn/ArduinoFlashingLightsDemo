@@ -1,0 +1,62 @@
+
+int startMoment;
+int pauze;
+int buttonDown;
+
+void setup() {
+  // put your setup code here, to run once:
+
+  pinMode(2, INPUT);
+  pinMode(3, OUTPUT);
+  pinMode(4, OUTPUT);
+  pinMode(5, OUTPUT);
+
+  digitalWrite(3, LOW);
+  digitalWrite(4, HIGH);
+  digitalWrite(5, LOW);
+  startMoment = 0;
+  pauze = 5000;
+  buttonDown = false;
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+
+  int nu = millis();
+  int change = false;
+  if ((nu - startMoment) > pauze) {
+    change = true;
+    startMoment = nu;
+  }
+
+  if (change) {
+    digitalWrite(3, !digitalRead(3));
+    digitalWrite(4, !digitalRead(4));
+    digitalWrite(5, !digitalRead(5));
+  }
+
+  if (buttonPressed()) {
+    pauze = pauze / 2;
+    if (pauze < 50) {
+      pauze = 5000;
+    }
+  }
+}
+
+bool buttonPressed() {
+  int buttonState = digitalRead(2);
+  bool buttonPressed = false;
+  if ((buttonState == HIGH) and (!buttonDown)) {
+    buttonDown = true;
+    return true;
+  } else if (buttonState == LOW){
+    buttonDown = false;
+    return false;
+  }
+  else
+  {
+    return false;
+  }
+}
+
+
