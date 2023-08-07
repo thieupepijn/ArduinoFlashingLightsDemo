@@ -1,4 +1,14 @@
 
+// this program is written for for the the breadboard-scheme of project 2 (SPACESHIP INTERFACE) in the 
+//official arduino-beginners-set project-book 
+//https://store.arduino.cc/collections/kits/products/arduino-starter-kit-multi-language
+//now the middle light and the two outer lights together are flashing on and off.
+//with the button the flash-speed can be increased
+
+
+
+
+
 int startMoment;
 int pauze;
 int buttonDown;
